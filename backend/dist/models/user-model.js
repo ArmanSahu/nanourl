@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema, model } from 'mongoose';
-import { comparePassword, hashPassword } from '../service/pssword-service.js';
+import { comparePassword, hashPassword } from '../services/password-service.js';
 const userSchema = new Schema({
     username: {
         type: String,
@@ -21,8 +21,9 @@ userSchema.pre('save', async function () {
     const hashedPassword = await hashPassword(this.password);
     this.password = hashedPassword;
 });
-userSchema.methods.comparePass = async function (password) {
-    return comparePassword(password, this.password);
+userSchema.methods.comparePass = async function (password, hashedPassword) {
+    console.log(password);
+    return await comparePassword(password, hashedPassword);
 };
 export const User = model("users", userSchema);
 //# sourceMappingURL=user-model.js.map

@@ -1,10 +1,10 @@
 import mongoose, { Document, Schema,model } from 'mongoose';
-import { comparePassword, hashPassword } from '../service/pssword-service.js';
+import { comparePassword, hashPassword } from '../services/password-service.js';
 
 export interface UserType extends Document {
     username: string,
     password: string,
-    comparePass(password: string): Promise<boolean>
+    comparePass(password: string,hashedPassword: string): Promise<boolean>
 } 
 
 const userSchema = new Schema<UserType >({
@@ -30,8 +30,9 @@ userSchema.pre('save',async function(){
     this.password = hashedPassword;
 });
 
-userSchema.methods.comparePass = async function(password: string){
-    return comparePassword(password,this.password);
+userSchema.methods.comparePass = async function(password: string,hashedPassword:string){
+    console.log(password);
+    return await comparePassword(password,hashedPassword);
 }
 
 export const User = model("users",userSchema);

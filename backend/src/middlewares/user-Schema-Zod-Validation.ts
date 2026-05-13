@@ -8,9 +8,10 @@ const validationSchema = z.object({
 });
 
 
-const userDataValidation = (req: Request, res: Response, next: NextFunction) => {
+export const userDataValidation = (req: Request, res: Response, next: NextFunction) => {
     const result  = validationSchema.safeParse(req.body);
     if(!result.success){
+        console.log(result.error.flatten());
         return res.status(400).json({
             message: "Validation failed"
         });

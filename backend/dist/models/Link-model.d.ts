@@ -1,8 +1,7 @@
-import mongoose, { Document, Schema } from "mongoose";
+import mongoose, { Document } from "mongoose";
 interface LinkType extends Document {
     originalUrl: string;
     shortCode: string;
-    userId: Schema.Types.ObjectId;
     clicks: number;
     createdAt: Date;
     updatedAt: Date;
@@ -45,15 +44,6 @@ export declare const Link: mongoose.Model<LinkType, {}, {}, {
         id: string;
     }>;
     shortCode?: mongoose.SchemaDefinitionProperty<string, LinkType, mongoose.Document<unknown, {}, LinkType, {
-        id: string;
-    }, mongoose.DefaultSchemaOptions> & Omit<LinkType & Required<{
-        _id: mongoose.Types.ObjectId;
-    }> & {
-        __v: number;
-    }, "id"> & {
-        id: string;
-    }>;
-    userId?: mongoose.SchemaDefinitionProperty<Schema.Types.ObjectId, LinkType, mongoose.Document<unknown, {}, LinkType, {
         id: string;
     }, mongoose.DefaultSchemaOptions> & Omit<LinkType & Required<{
         _id: mongoose.Types.ObjectId;
