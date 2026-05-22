@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import 'tailwindcss';
+
+@theme{
+  --color-primary-bg: #050816;
+  --color-secondary-bg: #112452;
+  --color-primary-text: #F8FAFC;
+  --color-secondary-text: #94A3B8;
+  --color-primary-button: #193CB8;
+  --color-secondary-button: #1F2937;
+  --color-primary-card: #111827;
+  --color-brand-start: #0F172A;
+  --color-brand-end: #112452;
+  --color-primary-hover: oklch(45.7% 0.24 277.023);
+  --color-secondary-hover: #374151;
+  --font-sans: "Inter", sans-serif;
+};
+
