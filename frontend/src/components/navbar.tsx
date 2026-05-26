@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { LinkIcon } from "../icons/Link-Icon"
 import { Button } from "./button"
 import { Wrapper } from "./wrapper";
@@ -5,6 +6,8 @@ import { Wrapper } from "./wrapper";
 
 export const Navbar = () => {
 
+
+    const navigate = useNavigate();
     const navigationStyles = "cursor-pointer hover:text-zinc-300" ;
 
     return <nav className="bg-primary-bg text-primary-text border-b border-secondary-bg/50 drop-shadow-sm drop-shadow-secondary-bg">
@@ -14,7 +17,7 @@ export const Navbar = () => {
             <div className="p-2 bg-primary-button rounded-md">
             <LinkIcon size="sm" />
             </div>
-            <p className="text-2xl font-bold cursor-pointer">NanoUrl</p>
+            <p onClick={() => navigate("/")} className="text-2xl font-bold cursor-pointer">NanoUrl</p>
           </div>
           <div className="flex items-center gap-7">
             <p className={`${navigationStyles}`}>Home</p>
@@ -22,8 +25,8 @@ export const Navbar = () => {
             <p className={`${navigationStyles}`}>Dashboard</p>
           </div>
           <div className="flex items-center gap-3">
-              <Button text="Log in" variant="secondary" size="md" />
-              <Button text="Sign up" variant="primary" size="md" />
+              <Button text="Log in" variant="secondary" size="md" onClick={() => navigate("/login")} />
+              <Button text="Sign up" variant="primary" size="md" onClick={() => navigate("/signup")} />
           </div>
         </div>
       </Wrapper>

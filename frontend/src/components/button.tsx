@@ -7,7 +7,8 @@ interface ButtonType{
     size: ButtonSize,
     startIcon?: ReactElement,
     endIcon?: ReactElement,
-    variant: ButtonVariant
+    variant: ButtonVariant,
+    onClick?: () => void;
 }
 
 const variantStyle = {
@@ -28,9 +29,10 @@ export const Button = ({
     text,
     size,
     variant,
-    endIcon
+    endIcon,
+    onClick
 }:ButtonType) => {
-    return <button className={`${variantStyle[variant]} ${sizeStyle[size]} ${defaultStyle} `}>
+    return <button onClick={onClick} className={`${variantStyle[variant]} ${sizeStyle[size]} ${defaultStyle} `}>
         {text}
         {endIcon && endIcon}
     </button>

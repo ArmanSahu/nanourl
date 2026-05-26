@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import { LinkIcon } from "../icons/Link-Icon"
 import type { AuthType } from "../types/auth-type"
 import { ActionField } from "./actionField"
@@ -6,6 +7,7 @@ import { Wrapper } from "./wrapper"
 
 
 export const Auth = ({type}:AuthType) => {
+    const navigate = useNavigate();
     return <div className="bg-primary-bg text-primary-text ">
         <Wrapper> 
             <div className="h-screen grid grid-cols-[2fr_1fr] grid-rows-[100px_1fr]">
@@ -13,7 +15,7 @@ export const Auth = ({type}:AuthType) => {
                     <div className="bg-primary-button p-2 rounded-lg">
                         <LinkIcon size="md" />
                     </div>
-                    <div className="text-2xl font-bold">
+                    <div onClick={() => navigate("/")} className="text-2xl font-bold cursor-pointer">
                         NanoUrl
                     </div>
                 </div>
